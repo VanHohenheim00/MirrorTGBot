@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  bot:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.bot
+    command: ["/usr/src/bot/wait-for-it.sh", "db:5432", "--", "python3.8", "./bot.py"]
+    env_file:
+        ./.env
+    environment:
+      REDIS_HOST: redis
+    depends_on:
+      - db
+    restart: always
+    volumes:
+      - ./bot:/usr/src/bot
+
+  db:
+    image: "postgres"
+    volumes:
+      - /root/.docker/postgre/:/var/lib/postgresql/data/
+    env_file:
+      - ./.env
+    restart: always
+    ports:
+      - "5432:5432"

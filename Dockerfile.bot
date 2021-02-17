@@ -1,0 +1,14 @@
+# pull official base image
+FROM python:3.8-buster
+#RUN apt-get update && apt-get install gcc git python3-dev musl-dev linux-headers libc-dev rsync zsh findutils wget util-linux grep libxml2-dev libxslt-dev  && pip3 install --upgrade pip
+# set work directory
+WORKDIR /usr/src/bot
+
+# install dependencies
+RUN pip install --upgrade pip
+COPY ./bot/requirements.txt ./requirements.txt
+RUN pip install -r ./requirements.txt
+
+# copy project
+
+COPY ./bot ./
