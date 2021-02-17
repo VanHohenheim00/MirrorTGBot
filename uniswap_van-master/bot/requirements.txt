@@ -1,0 +1,16 @@
+httpx==0.14.3
+beautifulsoup4==4.9.1
+aiogram==2.9.2
+tortoise-orm
+asyncpg
+requests==2.24.0
+python-dotenv==0.14.0
+aioredis
+gql==3.0.0a5
+numpy
+pandas
+python-binance-async
+aerich
+aiomysql
+pytz
+mplfinance
